@@ -1,20 +1,43 @@
-function urnaEletronica() {
+function inserir(valor) {
+    var valor1 = document.getElementById("campo1").value;
+    var valor2 = document.getElementById("campo2").value;
 
-    let opcao; contadorTotalDeVotos = 0;
+    if (valor1 == "") {
+        document.getElementById("campo1").value = valor;
+    } else if (valor2 == "") {
+        document.getElementById("campo2").value = valor;
+    }
+}
 
-    do {
+function corrige() {
+    document.getElementById("campo1").value = "";
+    document.getElementById("campo2").value = "";
+}
 
-        console.log('Repetição', contadorTotalDeVotos);
 
-        opcao = parseInt(prompt("digite a opcao: "));
+function votar() {
 
-        contadorTotalDeVotos++;
-
-    } while (opcao !== 0);
-
-    contadorTotalDeVotos--;
-
-    console.log("contagem:" , contadorTotalDeVotos);
+    var valor1 = parseInt(document.getElementById("campo1").value);
+    var valor2 = parseInt(document.getElementById("campo2").value);
+    var candidado = (valor1 * 10) + valor2;
+    if (sessionStorage.getItem(candidado) !== null) {
+        votos = parseInt(sessionStorage.getItem(candidado)) + 1;
+        sessionStorage.setItem(candidado, votos);
+    } else {
+        sessionStorage.setItem(candidado, 1);
         
     }
-        
+    alert("Confirmado voto no candidato "+candidado)
+    document.getElementById("campo1").value = "";
+    document.getElementById("campo2").value = "";
+}
+
+function resultado() {
+    document.getElementById("resultado").innerHTML=""
+    for(i=0;i<100;i++){
+        if (sessionStorage.getItem(i) !== null) {
+            //alert(i);
+            document.getElementById("resultado").innerHTML += "Cantidado "+i+" tem "+sessionStorage.getItem(i)+" votos<br/>";
+        }
+    }
+}
