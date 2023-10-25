@@ -1,104 +1,101 @@
 function urna1() {
-    let contador = 0;
-    let opcao;
 
-    let nome1;
-    let nome2;
-    let nome3;
-    let senha;
+    //declaração de variáveis
+    let votoscandidato1 = 0;
+    let votoscandidato2 = 0;
+    let votoscandidato3 = 0;
+    let votosBrancos = 0;
+    let votosNulos = 0;
+    let totalVotos = 0;
+    let voto;
+    let nomeGanhador;
+    let votosGanhador;
+    let ganhador = true;
+    let nomeCandidato1;
+    let nomeCandidato2;
+    let nomeCandidato3;
+    let encerrarVotacao;
+    let senhaMesario;
 
-    senha=prompt("Digite senha de 6 digitos")
-    nome1=prompt("Digite o nome do candidato 1")
-    nome2=prompt("Digite o nome do candidato 2")
-    nome3=prompt("Digite o nome do candidato 3")
+    console.log('inicio do programa');
 
-    let candidato1 = 0;
-    let candidato2 = 0;
-    let candidato3 = 0;
-    let votoBranco = 0;
-    let votoNulo = 0;
-    let decisao_de_saida = false;
-    let decisao_de_votoNulo = false;
+    console.clear();
+    console.log('**CONFIGURAÇÃO DA URNA**');
+
+    senhaMesario = parseInt(prompt('Digite a sua senha de mesário'));
+
+    do {
+        nomeCandidato1 = prompt('Digite o nome do candidato 1:');
+        nomeCandidato2 = prompt('Digite o nome do candidato 2:');
+        nomeCandidato3 = prompt('Digite o nome do candidato 3:');
+
+        console.log('**NOMES DOS CANDIDATOS **');
+        console.log('Candidato 1: ' + nomeCandidato1);
+        console.log('Candidato 2: ' + nomeCandidato2);
+        console.log('Candidato 3: ' + nomeCandidato3);
+
+    } while (!confirm('Se os nomes dos candidatos estiverem corretos, clique OK para continuar ou CANCELAR para voltar e digitar novamente'));
 
     do {
 
-            opcao = parseInt(prompt("Digite a opção \n" + 
-                "[1]" + nome1 + "\n" +
-                "[2]" + nome2 + "\n" +
-                "[2]" + nome3 + "\n" +
-                "[4] Voto branco\n" +
-                "[5] Voto nulo\n" + 
-                "Digite a senha para encerrar \n"));
-            console.log("Linha de instruçao");
-            contador++
-            if (opcao == 1) {
-                console.log("Você votou no", nome1);
-                candidato1++;
-            } else if (opcao == 2) {
-                console.log("Você votou no", nome2);
-                candidato2++;
-            } else if (opção == 3){
-                console.log("Você votou no", nome3)
-                candidato3++;
-            } else if (opcao == 4) {
-                console.log("Você votou em branco")
-                votoBranco++;
-            } else if (opcao == senha) {
-                decisao_de_saida = confirm("Se realmente deseja encerrar a votação clique ok se não cancele")
-            } else {
-                    decisao2 = confirm("Opção de voto inválida, seu voto anulado se concordar clique em 'ok' se deseja refazer seu voto aperte em 'cancelar'")
-                    if (decisao_de_votoNulo == true) {
-                        console.log("Você votou em nulo");
-                        votoNulo++;
-                    }
+        console.clear();
+        console.log('opções de voto:');
+        console.log('[1] Candidato 1: ' + nomeCandidato1);
+        console.log('[2] Candidato 2: ' + nomeCandidato2);
+        console.log('[3] Candidato 3: ' + nomeCandidato3);
+        console.log('[5] Voto em branco');
+
+        voto = parseInt(prompt('Digite sua opção de voto:'));
+
+        totalVotos++;
+
+        if (voto=== 1) {
+            votosCandidato1++;
+        } else if (voto === 2) {
+            votoscandidato2++;
+        } else if (voto === 3) {
+            votoscandidato3++;
+        } else if (voto === 5) {
+            votosBrancos++;
+        } else if (voto === 0) {
+            return;
+        } else if (senhaMesario) {
+
+            //segundo passo de confirmação para encerrar
+            encerrarVotacao = prompt('Deseja REALMENTE encerrar a votação? Digite [S] pa Sim ou [N] para Não').toUpperCase();
+
+            if (encerrarVotacao !== 'S'  && encerrarVotacao !== 'N') {
+                alert('Opcão inválida');
             }
-    } while (decisao_de_saida != true);
 
-    const totaldevotos = (candidato1 + candidato2 + candidato3 + votoBranco + votoNulo)
-    contador = contador -1;
-    percentual_candidato1 = (candidato1 / totaldevotos) * 100;
-    percentual_candidato2 = (candidato2 / totaldevotos) * 100;
-    percentual_candidato3 = (candidato3 / totaldevotos) * 100;
-    percentual_brancos = (votoBranco / totaldevotos) * 100;
-    percentual_nulos = (votoNulo / totaldevotos) * 100;
-    console.log("Contagem:",);
-
-    console.log("Este é o total de votos", totaldevotos)
-
-    console.log("Este é o total de votos", totaldevotos)
-
-    console.log("Este é o total de votos do", nome1, candidato1)
-        console.log("Este é o percentual", percentual_candidato1.toFixed(2) + '%');
-
-        console.log("Este é o total de votos do", nome2, candidato2)
-        console.log("Este é o percentual", percentual_candidato2.toFixed(2) + '%');
-
-        console.log("Este é o total de votos do", nome3, candidato3)
-        console.log("Este é o percentual", percentual_candidato3.toFixed(2) + '%');
-
-        console.log("Este é o total de votos em brancos", vtbranco)
-        console.log("Este é o percentual", percentual_brancos.toFixed(2) + '%');
-
-        console.log("Este é o total de votos nulos", vtnulo)
-        console.log("Este é o percentual", percentual_nulos.toFixed(2) + '%')
-
-        porcentagem_vencedor_candidato1 = ((candidato1 + vtbranco) / totaldevotos) * 100
-        porcentagem_vencedor_candidato2 = ((candidato2 + vtbranco) / totaldevotos) * 100
-        porcentagem_vencedor_candidato3 = ((candidato3 + vtbranco) / totaldevotos) * 100
-
-        if (candidato1 > candidato2 && candidato1 > candidato3) {
-                console.log("O vencedor é ", nome1)
-                console.log("O total de votos é", candidato1 + vtbranco)
-                console.log("A porcentagem de votos desse candidato é:" , porcentagem_vencedor_candidato1.toFixed(2) + '%')
-        } else if (candidato2 > candidato1 && candidato2 > candidato3) {
-                console.log("O vencedor é ", nome2)
-                console.log("O total de votos é", candidato2 + vtbranco)
-                console.log("A porcentagem de votos desse candidato é:" , porcentagem_vencedor_candidato2.toFixed(2) + '%')
-        } else if (candidato3 > candidato1 && candidato3 > candidato2) {
-                console.log("O vencedor é ", nome3)
-                console.log("O total de votos é", candidato3 + vtbranco)
-                console.log("A porcentagem de votos desse candidato é:" , porcentagem_vencedor_candidato3.toFixed(2) + '%')
+            totalVotos--;
         } else {
-                console.log("Empate")
+
+            if(confirm('ATENÇÃO: o seu voto será ANULADO. Deseja prosseguir?')) {
+                votosNulos++;
+            } else {
+                totalVotos--;
+            }
         }
-}
+
+    } while (encerrarVotacao !== 'S');
+
+    //Saída para o usuário: boletim de urna
+    console.clear();
+    console.log('** BOLETIM DE URNA **');
+
+    // se houver votação
+    if ( totalVotos > 0) {
+
+        console.log('Total de votos do candidato(a) ' + nomeCandidato1 + ': ' + votosCandidato1 + ' votos (' + (votosCandidato1 / totalVotos * 100).toFixed(2) + '%)');
+        console.log('Total de votos do candidato(a) ' + nomeCandidato2 + ': ' + votosCandidato2 + ' votos (' + (votosCandidato2 / totalVotos * 100).toFixed(2) + '%)');
+        console.log('Total de votos do candidato(a) ' + nomeCandidato3 + ': ' + votosCandidato3 + ' votos (' + (votosCandidato3 / totalVotos * 100).toFixed(2) + '%)');
+        console.log('Total de votos brancos: ' + votosBrancos + ' votos (' + (votosBrancos / totalVotos * 100).toFixed(2) + '%)');
+        console.log('Total de votos nulos: ' + votosNulos + ' votos (' + (votosNulos / totalVotos * 100).toFixed(2) + '%)');
+
+        // determinação do ganhador
+        if (votoscandidato1 > votoscandidato2 && votosCandidato1 > votoscandidato3) {
+            nomeGanhador = nomeCandidato1;
+            votosGanhador = votoscandidato1 + votosBrancos;
+        } else if ()
+    }
