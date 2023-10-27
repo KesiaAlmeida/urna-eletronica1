@@ -1,4 +1,4 @@
-function teste() {
+function urnaEletronica() {
 
     //declaracao de variaveis
     let votosCandidatos1 = 0;
@@ -26,28 +26,30 @@ function teste() {
 
     senhaMesario = parseInt(prompt('Digite sua senha de mesário'));
 
-    senha = parseInt(prompt('Digite sua senha de mesário:'));
-    nome1 = prompt('Digite o nome do Candidato 1');
-    nome2 = prompt('Digite o nome do Candidato 2');
-    nome3 = prompt('Digite o nome do Candidato 3');
-
-    console.log('** nome dos candidatos **');
-    console.log('Candidato 1: ' + nome1);
-    console.log('Candidato 2: 2' + nome2);
-    console.log('Candidato 3: 3' + nome3);
-
+    do {
+        nomeCandidato1 = prompt('Digite o nome do candidato 1:');
+        nomeCandidato2 = prompt('Digite o nome do candidato 2:');
+        nomeCandidato3 = prompt('Digite o nome do candidato 3:');
+        
+        console.log('** NOME DOS CANDIDADTOS **');
+        console.log('Candidato 1: ' + nome1);
+        console.log('Candidato 2: 2' + nome2);
+        console.log('Candidato 3: 3' + nome3);
+        
+    } while (!confirm('Se os nomes dos candidadtos estão corretos, clique em OK para confirmar ou CANCELAR para voltar e digitar novamente'));
 
     do {
+
     console.clear();
     console.log('opcoes de voto');
-    console.log('(1) Candidato1');
-    console.log('(2) Candidato2');
-    console.log('(3) Candidato3');
-    console.log('(5) votosBranco');
-    console.log('(8) votosNulos');
-    console.log('(0) encerrar votacao');
+    console.log('[1] Candidato 1: ' + nomeCandidato1);
+    console.log('[2] Candidato 2: ' + nomeCandidato2);
+    console.log('[3] Candidato 3: ' + nomeCandidato3);
+    console.log('[5] Voto em branco');
 
     voto = parseInt(prompt('Digite sua opção de voto'));
+
+    totalVotos++;
 
     if (voto === 1) {
         votosCandidatos1++;
@@ -57,12 +59,11 @@ function teste() {
         votosCandidatos3++;
     } else if (voto === 5) {
         votosBranco++;
-    } else if (votosNulos=== 8) {
-        votosNulos++
-    } else if (voto === 0) {
+    } else if (votosNulos=== 0) {
+        return;
+    } else if (voto === senhaMesario) {
 
-
-//toUpperCase() O método toUpperCase() retorna o valor da string original convertido em letras maiúsculas//
+        //segundo passo de confirmação para encerrar
 
         encerrarVotacao = prompt('Deseja REALMENTE encerrar a votação? Digite [S] para Sim ou [N] para Não'); toUpperCase();
 
@@ -82,10 +83,14 @@ function teste() {
     }
 
     
-    }while (encerrarVotacao !== 'S');
+    } while (encerrarVotacao !== 'S');
 
-    //se houver votação
+    // Saída para o usuário: boletim de urna
+    console.clear();
+    console.log('** BOLETIM DE URNA **');
+    console.log('Total de votos: ' + totalVotos);
 
+    // se houver votação
     if (totalVotos > 0) {
 
     }
@@ -101,12 +106,10 @@ function teste() {
     //determinar ganhador
     if (votosCandidatos1 > votosCandidatos2 && votosCandidatos1 > votosCandidatos3) {
         nomeGanhador = 'Candidato 1';
-        votosGanhador = votosCandidatos1 + votosBranco;
-        ganahdor = true;
+        votosGanhador = votosCandidatos1 + votosBrancos;
     } else if (votosCandidatos2 > votosCandidatos1 && votosCandidatos2 > votosCandidatos3) {
         nomeGanhador = 'Candidato 2' ;
         votosGanhador = votosCandidatos2 + votosBranco;
-        ganahdor =
     } else if ( votosCandidatos3 > votosCandidatos1 && votosCandidatos3 > votosCandidatos2) {
         nomeGanhador = 'Candidato 3' ;
         votosGanhador = votosCandidatos3 + votosBranco;
@@ -115,12 +118,17 @@ function teste() {
 
 
         //exibição de ganhador
-        console.log('')
+        console.log('');
         if (ganhador) {
-            console.log('O ganhador dessa urna foi ' + nomeGanhador + ' com' + votosGanhador + ' votos (' + ());
+            console.log('O ganhador dessa urna foi ' + nomeGanhador + ' com' + votosGanhador + ' votos (votosGanhador / totalVotos * 100).toFixed(2) + '%)`);
         } else {
             console.log('Não houve ganhador nesta urna (empate entre  2 ou mais candidatos');
         }
+
+    } else {
+        console.log('Não houve votação nessa urna');
     }
+
+    console.log('Fim do pograma');
     
 }
