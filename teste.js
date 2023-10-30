@@ -1,3 +1,21 @@
+function dataHoraAual() {
+    const dataHora = new Date();
+
+
+    return `${dataHora.getDate()}/${getMonth() + 1}/${getFullYear}/${getHours}:${getMinutes}:${getSeconds} ${getMilliseconds}`;
+}
+
+function verificarIntegridadeUrna( {
+
+    fetch('teste.js')
+    .then(conteudo => {conteudo.text()})
+    .then(conteudo => {CryptoJS.SHA256(conteudo).ToString()})
+    .then(hashUrnaAtual => {
+        fetch(hashVerificado => {console.log(hashVerificado)})
+    });
+})
+
+
 function urnaEletronica() {
 
     //declaracao de variaveis
@@ -15,6 +33,9 @@ function urnaEletronica() {
     let nomeCandidato3;
     let encerrarVotacao;
     let senhaMesario;
+    let primeiraConfiguração = true;
+
+}
 
     
     
@@ -118,17 +139,16 @@ function urnaEletronica() {
 
 
         //exibição de ganhador
-        console.log('');
-        if (ganhador) {
-            console.log('O ganhador dessa urna foi ' + nomeGanhador + ' com' + votosGanhador + ' votos (votosGanhador / totalVotos * 100).toFixed(2) + '%)`);
-        } else {
-            console.log('Não houve ganhador nesta urna (empate entre  2 ou mais candidatos');
-        }
+    console.log('');
+    if (ganhador) {
+        console.log('O ganhador dessa urna foi ' + nomeGanhador + ' com' + votosGanhador + ' votos (votosGanhador / totalVotos * 100).toFixed(2) + %);
+    } else {
+        console.log('Não houve ganhador nesta urna (empate entre  2 ou mais candidatos');
+    }
 
     } else {
         console.log('Não houve votação nessa urna');
     }
 
-    console.log('Fim do pograma');
-    .
-}
+    console.log('Fim do programa');
+    
