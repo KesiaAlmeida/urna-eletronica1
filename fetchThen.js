@@ -9,13 +9,4 @@
 //    'chave': 'valor';
 //}
 
-
-//fetch('https://viacep.com.br/ws/08330900/json/')
-
-fetch(requisição)
-
-{
-    "nome": "chapolin",
-    "arma": "marreta bionica",
-    "cor": "vermelha",
-}
+// fetch(requisicao).then(resposta);

@@ -34,6 +34,8 @@ function urnaEletronica() {
     let votosCandidatos1 = 0;
     let votosCandidatos2 = 0;
     let votosCandidatos3 = 0;
+    let votosCandidato4 = 0;
+    let votosCandidato5 = 0;
     let votosBranco = 0;
     let votosNulos = 0;
     let totalVotos = 0;
@@ -46,6 +48,8 @@ function urnaEletronica() {
     let nomeCandidato1;
     let nomeCandidato2;
     let nomeCandidato3;
+    let nomeCandidato4;
+    let nomeCandidato5;
 
     let encerrarVotacao;
     let senhaMesario;
@@ -66,6 +70,8 @@ function urnaEletronica() {
             nomeCandidato1 = prompt('Digite o nome do candidato 1:');
             nomeCandidato2 = prompt('Digite o nome do candidato 2:');
             nomeCandidato3 = prompt('Digite o nome do candidato 3:');
+            nomeCandidato4 = prompt('Digite o nome do candidato 4:');
+            nomeCandidato5 = prompt('Digite o nome do candidato 5:');
             primeiraConfiguração = false;
         } else {
             opcaoNome = parseInt(prompt(`
@@ -73,6 +79,9 @@ function urnaEletronica() {
             [1] ${nomeCandidato1} \n
             [2] ${nomeCandidato2} \n
             [3] ${nomeCandidato3} \n
+            [4] ${nomeCandidato4} \n
+            [5] ${nomeCandidato5} \n
+
         `));
 
         if (opcaoNome === 1) {
@@ -91,6 +100,8 @@ function urnaEletronica() {
         console.log(`Candidato 1: ${nomeCandidato1}`);
         console.log(`Candidato 2: ${nomeCandidato2}`);
         console.log(`Candidato 3: ${nomeCandidato3}`);
+        console.log(`Candidato 4: ${nomeCandidato4}`);
+        console.log(`Candidato 5: ${nomeCandidato5}`);
 
 } while (!confirm(`Se os nomes dos candidatos estão corretos, clique OK para continuar ou CANCELAR para voltar e digitar novamente`));
 
@@ -101,6 +112,9 @@ do {
     console.log(`[1] Candidato 1: ${nomeCandidato1}`);
     console.log(`[2] Candidato 2: ${nomeCandidato2}`);
     console.log(`[3] Candidato 3: ${nomeCandidato3}`);
+    console.log(`[4] Candidato 4: ${nomeCandidato4}`);
+    console.log(`[5] Candidato 4: ${nomeCandidato5}`);
+
     console.log(`[5] Voto em branco`);
 
 }
@@ -115,6 +129,10 @@ do {
         votosCandidatos2++;
     } else if (voto ===3) {
         votosCandidatos3++;
+    } else if (voto ===4) {
+        votosCandidatos4++;
+    } else if (voto ===5) {
+        votosCandidatos5++;
     } else if (voto === 5) {
         votosBranco++;
     } else if (votosNulos=== 0) {
@@ -160,6 +178,10 @@ do {
         
         console.log(`Total de votos do(a) candidato(a) ${nomeCandidato3}: ${votosCandidato3} votos (${(votosCandidato3 / totalVotos * 100).toFixed(2)}%)`);
 
+        console.log(`Total de votos do(a) candidato(a) ${nomeCandidato4}: ${votosCandidato4} votos (${(votosCandidato4 / totalVotos * 100).toFixed(2)}%)`);
+
+        console.log(`Total de votos do(a) candidato(a) ${nomeCandidato5}: ${votosCandidato5} votos (${(votosCandidato5 / totalVotos * 100).toFixed(2)}%)`);
+
         console.log(`Total de votos brancos: ${votosBrancos} votos (${(votosBrancos / totalVotos * 100).toFixed(2)}%)`);
 
         console.log(`Total de votos nulos: ${votosNulos} votos (${(votosNulos / totalVotos * 100).toFixed(2)}%)`); 
@@ -198,6 +220,5 @@ do {
     verificarIntegridadeUrna();
 
     console.log(`Fim do programa`);
-
 }
     
