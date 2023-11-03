@@ -130,7 +130,7 @@ function urnaEletronica() {
 
         }
 
-        console.log(`Total de votos brancos: ${votosBrancos} votos (${(votosBrancos / totalVotos * 100).toFixed(2)}%)`);
+        console.log(`Total de votos branco: ${votosBranco} votos (${(votosBranco / totalVotos * 100).toFixed(2)}%)`);
 
         console.log(`Total de votos nulos: ${votosNulos} votos (${(votosNulos / totalVotos * 100).toFixed(2)}%)`);
 
